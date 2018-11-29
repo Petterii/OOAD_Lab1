@@ -34,11 +34,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void undoClick(View view) {
-        originator.UndoInStack(value -> textInfo.setText(value));
+        originator.UndoInStack();
     }
 
     public void redoClick(View view) {
-        originator.RedoInStack(value -> textInfo.setText(value));
-
+        originator.RedoInStack();
     }
 }

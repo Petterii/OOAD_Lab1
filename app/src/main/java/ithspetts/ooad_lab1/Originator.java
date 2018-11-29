@@ -21,9 +21,10 @@ public class Originator<T> {
     public void addUndoStack(T yourinput, Consumer<T> function){
         set(yourinput, function);
         undoStack.add(createMemento());
+        redoStack = new ArrayList<>();
     }
 
-    public void UndoInStack(Consumer<T> function){
+    public void UndoInStack(){
         if (undoStack.size() > 1) {
             restore(undoStack.get(undoStack.size() - 2));
             redoStack.add(undoStack.get(undoStack.size() - 1));
@@ -32,7 +33,7 @@ public class Originator<T> {
 
     }
 
-    public void RedoInStack(Consumer<T> function){
+    public void RedoInStack(){
         if (redoStack.size() >= 1) {
             restore(redoStack.get(redoStack.size() - 1));
             undoStack.add(redoStack.get(redoStack.size() - 1));
